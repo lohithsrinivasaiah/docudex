@@ -1,0 +1,10 @@
+# ---- llm ----
+model: groq:llama-3.1-70b-versatile     # Specify the LLM to use
+temperature: null                       # Set default temperature parameter
+top_p: null                             # Set default top-p parameter, range (0, 1)
+
+# ---- document loaders ----
+document_loaders:
+  pdf: 'pdftotext $1 -'                         # Load .pdf file, see https://poppler.freedesktop.org
+  docx: 'pandoc --to plain $1'                  # Load .docx file, see https://pandoc.org for install
+  recursive_url: 'rag-crawler $1 $2'            # Load websites, see https://github.com/sigoden/rag-crawler
