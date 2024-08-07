@@ -1,5 +1,11 @@
 # DocuDex
 
+![Development](https://img.shields.io/badge/status-in%20development-orange)
+![GitHub](https://img.shields.io/github/license/lohithsrinivasaiah/docudex)
+![GitHub last commit](https://img.shields.io/github/last-commit/lohithsrinivasaiah/docudex)
+![GitHub top language](https://img.shields.io/github/languages/top/lohithsrinivasaiah/docudex)
+
+
 DocuDex is a Python CLI tool that allows you to interact with documents using large language models (LLMs) directly from your terminal. It supports various document formats like PDF and DOCX, enabling seamless document processing and information retrieval.
 
 ## Features
