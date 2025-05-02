@@ -7,10 +7,10 @@ By leveraging Large Language Models (LLMs) and advanced RAG pipelines, DocuDex o
 
 ## Key Features
 
-- **Flexible RAG Strategies**  
+- **Flexible RAG Strategies**
   Choose from built-in RAG pipelines such as basic and advanced methods, based on your analysis needs.
 
-- **Multiple Document Formats**  
+- **Multiple Document Formats**
   Supports common file types including PDF, DOCX, and TXT.
 
 - **LLM Integration**
@@ -19,13 +19,13 @@ By leveraging Large Language Models (LLMs) and advanced RAG pipelines, DocuDex o
 - **Modern Terminal UI**
   Interact with documents through a sleek, responsive terminal interface built with [Textual](https://textual.textualize.io/), offering an intuitive and accessible user experience.
 
-- **Real-Time Analysis**  
+- **Real-Time Analysis**
   Generate summaries, answer questions, and uncover insights instantly.
 
 
 ## Tech Stack
 
-- **Python 3.8+** — Reliable and widely adopted.
+- **Python 3.9+** — Reliable and widely adopted.
 - **Textual** — For building the terminal-based user interface.
 - **LangChain** — Powers RAG and LLM workflows.
 
@@ -97,4 +97,3 @@ Released under the [MIT License](LICENSE), giving you the freedom to use, modify
 
 DocuDex is a simple tool built to make document analysis easier.
 If you find it useful, give it a ⭐ on GitHub, share it with others, or help improve it.
-
