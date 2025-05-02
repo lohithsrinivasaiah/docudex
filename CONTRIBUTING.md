@@ -2,14 +2,12 @@
 
 Thank you for your interest in contributing to **DocuDex**, a TUI for intelligent document analysis using Retrieval-Augmented Generation (RAG). We welcome contributions of all kinds — from bug reports to new features and documentation improvements.
 
----
-
 ## Getting Started
 
 1. **Fork & Clone the Repo**
 
    ```bash
-   git clone https://github.com/your-username/docudex.git
+   git clone https://github.com/lohithsrinivasaiah/docudex.git
    cd docudex
    ```
 
@@ -39,8 +37,6 @@ Thank you for your interest in contributing to **DocuDex**, a TUI for intelligen
    pytest tests/
    ```
 
----
-
 ## Guidelines
 
 * Format code with `black .`
@@ -50,8 +46,6 @@ Thank you for your interest in contributing to **DocuDex**, a TUI for intelligen
 * Use meaningful commit messages (`feat:`, `fix:`, `docs:`)
 * Open PRs against the `main` branch
 
----
-
 ## How You Can Help
 
 * Add new RAG strategies
@@ -60,13 +54,9 @@ Thank you for your interest in contributing to **DocuDex**, a TUI for intelligen
 * Enhance performance or testing
 * Improve documentation
 
----
-
 ## Need Help?
 
 * [Issue Tracker](https://github.com/lohithsrinivasaiah/docudex/issues)
 * Email: [lohith.srinivasaiah@gmail.com](mailto:lohith.srinivasaiah@gmail.com)
 
 Thanks for making DocuDex better!
-
----
