@@ -4,7 +4,6 @@
 
 By leveraging Large Language Models (LLMs) and advanced RAG pipelines, DocuDex offers a unified, efficient platform for exploring and interacting with documents across a variety of formats—making it an indispensable tool for developers, researchers, and data professionals.
 
----
 
 ## Key Features
 
@@ -23,7 +22,6 @@ By leveraging Large Language Models (LLMs) and advanced RAG pipelines, DocuDex o
 - **Real-Time Analysis**  
   Generate summaries, answer questions, and uncover insights instantly.
 
----
 
 ## Tech Stack
 
@@ -31,7 +29,6 @@ By leveraging Large Language Models (LLMs) and advanced RAG pipelines, DocuDex o
 - **Textual** — For building the terminal-based user interface.
 - **LangChain** — Powers RAG and LLM workflows.
 
----
 
 ## Installation
 
@@ -44,7 +41,6 @@ pip install docudex
 
 For more details, refer to the [Installation Guide](#).
 
----
 
 ## Quick Start
 
@@ -62,7 +58,6 @@ docudex --help
 
 Check out the [Usage Documentation](#) for more examples.
 
----
 
 ## Contributing
 
@@ -79,13 +74,11 @@ To get involved:
 * Expanded document format support
 * Improved terminal interface features
 
----
 
 ## License
 
 Released under the [MIT License](LICENSE), giving you the freedom to use, modify, and distribute.
 
----
 
 ## Resources
 
@@ -93,18 +86,15 @@ Released under the [MIT License](LICENSE), giving you the freedom to use, modify
 * **Docs**: *Coming Soon*
 * **Issue Tracker**: [Submit bugs or feature requests](https://github.com/lohithsrinivasaiah/docudex/issues)
 
----
 
 ## Contact
 
 * **GitHub Discussions**: [Start a conversation](https://github.com/lohithsrinivasaiah/docudex/discussions)
 * **Email**: [lohith.srinivasaiah@gmail.com](mailto:lohith.srinivasaiah@gmail.com)
 
----
 
 ## Join the Community
 
 DocuDex is a simple tool built to make document analysis easier.
 If you find it useful, give it a ⭐ on GitHub, share it with others, or help improve it.
 
----
