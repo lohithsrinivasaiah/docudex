@@ -1,0 +1,81 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.env/
+.venv/
+venv/
+ENV/
+env/
+env.bak/
+venv.bak/
+
+# Poetry / pipenv / setuptools / Hatch
+poetry.lock
+Pipfile.lock
+*.log
+
+# VS Code / IDEs / Editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Test coverage
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.pytest_cache/
+.tox/
+
+# Type checker / lint / formatter
+.mypy_cache/
+ruff_cache/
+.pyre/
+.pytype/
+
+# Jupyter / IPython
+.ipynb_checkpoints/
+
+# macOS / Windows / Linux
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# Misc
+*.sqlite3
+*.db
+*.env
+.env.*
+*.bak
+*.swp
+*.tmp
+*.log
+
+# Local logs and reports
+logs/
+*.log
+
+# PyCharm files
+*.iml
+
+# Ignore compiled Cython files
+*.c
+*.cpp
