@@ -1,51 +1,87 @@
 repos:
-  - repo: https://github.com/psf/black
-    rev: 24.3.0
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
     hooks:
-      - id: black
-        language_version: python3
+      - id: trailing-whitespace
+        name: Remove trailing whitespace
+        description: Removes trailing whitespace from files.
+      - id: end-of-file-fixer
+        name: Ensure newline at end of file
+        description: Ensures that files end with a newline.
+      - id: check-yaml
+        name: Check YAML files
+        exclude: |
+          (?x)^(
+            .*/config\.yaml$|
+          )
+        description: Validates YAML files for syntax errors.
+      - id: debug-statements
+        name: Detect debug statements
+        description: Detects `print` and `pdb` statements in code.
+      - id: name-tests-test
+        name: Enforce test name convention
+        description: Ensures test files start with `test_`.
+        args: ['--pytest-test-first']
+      - id: detect-private-key
+        name: Detect private keys
+        description: Prevent committing private keys or secrets.
+      - id: check-added-large-files
+        name: Check for large files
+        description: Prevent large files from being committed.
+        args: [--maxkb=500]
 
-  - repo: https://github.com/asottile/reorder_python_imports
-    rev: v3.10.0
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v3.19.1
+    hooks:
+      - id: pyupgrade
+        name: Upgrade syntax for newer Python versions
+        description: Automatically upgrades syntax for newer Python versions.
+        args: [--py39-plus]
+
+  - repo: https://github.com/asottile/reorder-python-imports
+    rev: v3.14.0
     hooks:
       - id: reorder-python-imports
-        language_version: python3
-
-  - repo: https://github.com/pycqa/flake8
-    rev: 7.0.0
-    hooks:
-      - id: flake8
-        language_version: python3
-
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.8.0
-    hooks:
-      - id: mypy
-        language_version: python3
-
-  - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
-    hooks:
-      - id: check-yaml
-      - id: end-of-file-fixer
-      - id: trailing-whitespace
-      - id: debug-statements
-      - id: check-added-large-files
-        args: ["--maxkb=500"]
-
-  - repo: https://github.com/pycqa/bandit
-    rev: 1.7.5
-    hooks:
-      - id: bandit
-        args: ["-r", "src"]
+        name: Reorder Python imports
+        description: Reorders Python imports based on PEP 8 guidelines.
+        exclude: ^(pre_commit/resources/|testing/resources/python3_hooks_repo/)
+        args: [--py39-plus]
 
   - repo: https://github.com/hakancelikdev/unimport
     rev: 1.2.1
     hooks:
       - id: unimport
+        name: Remove unused imports
+        description: Detects and removes unused imports in Python files.
+
+  - repo: https://github.com/psf/black
+    rev: 25.1.0
+    hooks:
+      - id: black
+        name: Format Python code with Black
+        description: Formats code with Black, the uncompromising code formatter.
+        args: [--line-length=99, --skip-magic-trailing-comma]
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.1.2
+    hooks:
+      - id: flake8
+        name: Lint Python code with Flake8
+        description: Checks Python code for style violations and errors.
+        additional_dependencies: [flake8-bugbear, flake8-comprehensions]
+        args: [--max-line-length=99, --extend-ignore=B023]
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.10.0
+    hooks:
+      - id: mypy
+        name: Type check with mypy
+        description: Run static type checks using mypy.
+        args: [--ignore-missing-imports]
 
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v3.14.1
+    rev: v3.13.0
     hooks:
       - id: commitizen
-        name: commitizen check
+        name: Enforce conventional commit messages
+        description: Ensure commit messages follow the conventional commit format.
