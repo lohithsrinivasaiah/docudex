@@ -10,6 +10,8 @@ keywords = ["ChatBot", "LangChain", "LLMs", "Python", "Textual", "Tui"]
 
 [tool.poetry.dependencies]
 python = ">=3.9,<4.0"
+platformdirs = "^4.3.7"
+tomli = "^2.2.1"
 
 [tool.poetry.group.dev.dependencies]
 pre-commit = "^4.1.0"
