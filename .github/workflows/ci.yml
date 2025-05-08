@@ -1,4 +1,4 @@
-name: Coverage-Check
+name: Poetry CI/CD
 
 on:
   push:
@@ -26,8 +26,17 @@ jobs:
 
       - name: Install Poetry
         run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          echo "$HOME/.local/bin" >> $GITHUB_PATH  # Add Poetry to PATH
+          pipx install poetry
+        env:
+          PIPX_BIN_DIR: ${{ runner.os == 'Windows' && 'C:\Users\runneradmin\AppData\Roaming\Python\Scripts' || '/home/runner/.local/bin' }}
+
+      - name: Add Poetry to PATH
+        run: |
+          echo "${{ runner.os == 'Windows' && 'C:\Users\runneradmin\AppData\Roaming\Python\Scripts' || '/home/runner/.local/bin' }}" >> $GITHUB_PATH
+
+      - name: Verify Poetry installation
+        run: |
+          poetry --version
 
       - name: Install dependencies
         run: |
@@ -60,8 +69,13 @@ jobs:
 
       - name: Install Poetry
         run: |
-          curl -sSL https://install.python-poetry.org | python3 -
-          echo "$HOME/.local/bin" >> $GITHUB_PATH
+          pipx install poetry
+        env:
+          PIPX_BIN_DIR: /home/runner/.local/bin
+
+      - name: Add Poetry to PATH
+        run: |
+          echo "/home/runner/.local/bin" >> $GITHUB_PATH
 
       - name: Install coverage and diff tools
         run: |
@@ -78,3 +92,37 @@ jobs:
         run: |
           git fetch origin main
           poetry run diff-cover coverage.xml --compare-branch=origin/main --fail-under=100
+
+  build:
+    name: Build Package
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Poetry
+        run: |
+          pipx install poetry
+        env:
+          PIPX_BIN_DIR: /home/runner/.local/bin
+
+      - name: Add Poetry to PATH
+        run: |
+          echo "/home/runner/.local/bin" >> $GITHUB_PATH
+
+      - name: Build package
+        run: |
+          poetry build
+
+      - name: Upload dist artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
