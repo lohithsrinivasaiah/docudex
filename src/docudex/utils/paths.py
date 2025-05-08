@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from pathlib import Path
 
 from platformdirs import user_config_dir
@@ -38,11 +40,3 @@ class Paths:
             Path: Log directory path.
         """
         return Path(user_log_dir(self.package_name))
-
-
-if __name__ == "__main__":
-    pkg_info = PackageInfo()
-    paths = Paths(pkg_info)
-
-    print(f"Config directory: {paths.get_config_dir()}")
-    print(f"Log directory: {paths.get_log_dir()}")

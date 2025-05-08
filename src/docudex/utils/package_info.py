@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from pathlib import Path
 
 import tomli as tomllib
@@ -39,8 +41,3 @@ class PackageInfo:
             return data["tool"]["poetry"]["name"]
         except (FileNotFoundError, KeyError, tomllib.TOMLDecodeError):
             return self.default_name
-
-
-if __name__ == "__main__":
-    pkg_info = PackageInfo()
-    print(f"Package name: {pkg_info.get_package_name()}")
