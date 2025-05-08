@@ -24,26 +24,26 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Create virtual environment
+        run: |
+          python -m venv venv
+          echo "VIRTUAL_ENV=$(pwd)/venv" >> $GITHUB_ENV
+          echo "${{ runner.os == 'Windows' && 'venv\\Scripts' || 'venv/bin' }}" >> $GITHUB_PATH
+
       - name: Install Poetry
         run: |
-          pipx install poetry
-        env:
-          PIPX_BIN_DIR: ${{ runner.os == 'Windows' && 'C:\Users\runneradmin\AppData\Roaming\Python\Scripts' || '/home/runner/.local/bin' }}
-
-      - name: Add Poetry to PATH
-        run: |
-          echo "${{ runner.os == 'Windows' && 'C:\Users\runneradmin\AppData\Roaming\Python\Scripts' || '/home/runner/.local/bin' }}" >> $GITHUB_PATH
-
-      - name: Verify Poetry installation
-        run: |
+          . ${{ runner.os == 'Windows' && 'venv\\Scripts\\activate' || 'venv/bin/activate' }}
+          pip install poetry
           poetry --version
 
       - name: Install dependencies
         run: |
-          poetry install --with dev  # Install dependencies including dev group
+          . ${{ runner.os == 'Windows' && 'venv\\Scripts\\activate' || 'venv/bin/activate' }}
+          poetry install --with dev
 
       - name: Run tests with coverage
         run: |
+          . ${{ runner.os == 'Windows' && 'venv\\Scripts\\activate' || 'venv/bin/activate' }}
           poetry run pytest --cov=docudex --cov-report=xml --cov-report=term-missing
 
       - name: Upload coverage to GitHub Actions
@@ -67,18 +67,21 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Create virtual environment
+        run: |
+          python -m venv venv
+          echo "VIRTUAL_ENV=$(pwd)/venv" >> $GITHUB_ENV
+          echo "venv/bin" >> $GITHUB_PATH
+
       - name: Install Poetry
         run: |
-          pipx install poetry
-        env:
-          PIPX_BIN_DIR: /home/runner/.local/bin
-
-      - name: Add Poetry to PATH
-        run: |
-          echo "/home/runner/.local/bin" >> $GITHUB_PATH
+          . venv/bin/activate
+          pip install poetry
+          poetry --version
 
       - name: Install coverage and diff tools
         run: |
+          . venv/bin/activate
           poetry add --group dev coverage diff-cover
           poetry install --with dev
 
@@ -90,39 +93,6 @@ jobs:
 
       - name: Fail PR if coverage drops
         run: |
+          . venv/bin/activate
           git fetch origin main
           poetry run diff-cover coverage.xml --compare-branch=origin/main --fail-under=100
-
-  build:
-    name: Build Package
-    runs-on: ubuntu-latest
-    needs: test
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
-
-      - name: Install Poetry
-        run: |
-          pipx install poetry
-        env:
-          PIPX_BIN_DIR: /home/runner/.local/bin
-
-      - name: Add Poetry to PATH
-        run: |
-          echo "/home/runner/.local/bin" >> $GITHUB_PATH
-
-      - name: Build package
-        run: |
-          poetry build
-
-      - name: Upload dist artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: dist
-          path: dist/
